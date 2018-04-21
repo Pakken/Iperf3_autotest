@@ -38,6 +38,7 @@ def main():
                 # create special title
                 head_title = ['TEST RESULTS WITH IPERF3 PROGRAM',
                               'TEST INFO :',
+                              'test file : ' + result.strip(),
                               #'system info : ' + i['start']['system_info'],
                               'test proto : ' + i['start']['test_start']['protocol'],
                               'num of streams : ' + str(i['start']['test_start']['num_streams']),
@@ -47,11 +48,13 @@ def main():
                           'duration in sec : ' + str(i['end']['sum_sent']['seconds']),
                           'total bytes : ' + str(i['end']['sum_sent']['bytes']),
                           'average speed : ' + str(i['end']['sum_sent']['bits_per_second']),
-                          'count of retransmits : ' + str(i['end']['sum_sent']['retransmits']),
                           'Received :',
                           'duration in sec : ' + str(i['end']['sum_received']['seconds']),
                           'total bytes : ' + str(i['end']['sum_received']['bytes']),
                           'average speed : ' + str(i['end']['sum_received']['bits_per_second'])]
+                if 'retransmits' in i['end']['sum_sent']:
+                    text.append('Count of retransmits : ' + str(i['end']['sum_sent']['retransmits']))
+                    
                 # create data for plot
                 for j in i['intervals']:
                     time_ticks.append(j['sum']['end'])
