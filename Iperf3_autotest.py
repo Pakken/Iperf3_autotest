@@ -17,7 +17,7 @@ FILE_NAME = 'iperf3_test_{}_{}_{}'
 def main():
     with open('results','a+') as results :
         for i in TESTS:
-            res_file_name = FILE_NAME.format(ENV_NAME,datetime.today().strftime('%H:%M_%d:%m:%Y'),i[5])
+            res_file_name = FILE_NAME.format(ENV_NAME,datetime.today().strftime('%H_%M_%d_%m_%Y'),i[5].replace('-','_'))
             results.writelines(res_file_name + '\n')
             with open(res_file_name,'w+') as f:
                 for j in range(0,MAX_FLOW_NUM,4):
