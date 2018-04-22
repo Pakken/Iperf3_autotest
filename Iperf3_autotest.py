@@ -1,7 +1,7 @@
 from subprocess import call
 from datetime import datetime
 
-IPERF3_SERV = '192.168.0.17'
+IPERF3_SERV = input('Enter server ip: ')
 ENV_NAME = input('Input test environvent name: ')
 TIME_TEST_VAR = input('Input time to test: ') # Seconds
 BYTES_VAR = 1000000000*float(input('Input Gigabytes to test: '))

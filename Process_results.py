@@ -58,14 +58,15 @@ def main():
                 # create data for plot
                 for j in i['intervals']:
                     time_ticks.append(j['sum']['end'])
-                    bps_ticks.append(j['sum']['bits_per_second'])
+                    bps_ticks.append(j['sum']['bits_per_second']/1000000)
 
                 fig = plt.figure(figsize=(10,15))
                 ax = fig.add_subplot(111)
                 fig.subplots_adjust(top=0.6)
-                ax.set_title('\n'.join(head_title) + '\n'.join(text),fontsize=14)
+                fig.suptitle('\n'.join(head_title),fontsize=14,fontweight='bold')
+                ax.set_title('\n'.join(text),fontsize=14)
                 ax.set_xlabel('time in sec')
-                ax.set_ylabel('bits per second')
+                ax.set_ylabel('Mbits per second')
                 ax.grid()
                 ax.bar(time_ticks,
                         bps_ticks,
